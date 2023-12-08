@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name
     - name: Save the Docker iamge
-      run: docker save -o my-image-name.tar
+      run: docker save -o my-image-name.tar my-image-name
     - name: Upload the Docker image as an artifact
       uses: actions/upload-artifact@v3
       with:
