@@ -19,7 +19,7 @@ jobs:
     - name: Save the Docker iamge
       run: docker save -o my-image-name.tar
     - name: Upload the Docker image as an artifact
-      uses: actions/artifacts@v3
+      uses: actions/upload-artifact@v3
       with:
         name: my-image
         path: my-image-name.tar
