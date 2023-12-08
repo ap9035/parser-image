@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name
+    - name: Save the Docker iamge
+      run: docker save -o my-image-name.tar
+    - name: Upload the Docker image as an artifact
+      uses: actions/artifacts@v3
+      with:
+        name: my-image
+        path: my-image-name.tar
